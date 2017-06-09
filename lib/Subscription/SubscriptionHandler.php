@@ -103,7 +103,7 @@ class SubscriptionHandler extends AbstractHandler
         return $subscriptions;
     }
 
-    /**
+    /*
      * @param Subscription $subscription
      */
     public function cancel(Subscription $subscription)
@@ -120,7 +120,11 @@ class SubscriptionHandler extends AbstractHandler
      */
     public function update(Subscription $subscription)
     {
-        $request = new SubscriptionUpdate($subscription);
+	$subscriptionMemento = clone $subscription;
+	$this->getSubscriptionMemento()->getPlan($subscriptionMemento);
+	$this->getSubscriptionMemento()->getPaymentMethod($subscriptionMemento);
+
+	$request = new SubscriptionUpdate($subscription, $subscriptionMemento);
 
         $response = $this->client->send($request);
 
