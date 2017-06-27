@@ -6,7 +6,6 @@ use PagarMe\Sdk\Recipient\Recipient;
 
 class SplitRule
 {
-
     use \PagarMe\Sdk\Fillable;
 
     /**

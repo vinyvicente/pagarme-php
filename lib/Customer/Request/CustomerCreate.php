@@ -8,7 +8,7 @@ use PagarMe\Sdk\Customer\Phone;
 
 class CustomerCreate implements RequestInterface
 {
-     /**
+    /**
      * @var string | Nome ou razão social do comprador
      */
     private $name;
